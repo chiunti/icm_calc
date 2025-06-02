@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:imc_calc/components/gender_selector.dart';
 import 'package:imc_calc/components/heigh_selector.dart';
+import 'package:imc_calc/components/number_selector.dart';
+import 'package:imc_calc/core/app_colors.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,6 +14,34 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Column(children: [GenderSelector(), HeighSelector()]);
+    return Column(
+      children: [
+        GenderSelector(),
+        HeighSelector(),
+        Padding(
+          padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              children: [
+                Expanded(child: Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.backgroundComponent,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: NumberSelector(title: 'Peso', unit: 'kg', value: 70))),
+                SizedBox(width: 16,),
+                Expanded(child: Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.backgroundComponent,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: NumberSelector(title: 'Edad', unit: 'años', value: 30))),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
